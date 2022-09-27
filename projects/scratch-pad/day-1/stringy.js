@@ -90,7 +90,19 @@ function toDashCase(string) {
 function beginsWith(string, char) { // must be case insensitive
     // YOUR CODE BELOW HERE //
 
-    
+    // convert args to lowercase and store in variable
+    var lowerString = string.toLowerCase();
+    var lowerChar = char.toLowerCase();
+    // determine if first character of lowerString === lowerChar
+    if (lowerString[0] === lowerChar) {
+        // return true
+        return true;
+    }
+    // else determine if first character of string != char
+    else {
+        //return false
+        return false;
+    }
 
     // YOUR CODE ABOVE HERE //
 }
@@ -110,6 +122,19 @@ function beginsWith(string, char) { // must be case insensitive
 function endsWith(string, char) { // must be case insensitive
     // YOUR CODE BELOW HERE //
 
+    // convert args to lowercase and store in variable
+    var lowerString = string.toLowerCase();
+    var lowerChar = char.toLowerCase();
+    // determine if last character of lowerString === lowerChar
+    if (lowerString[string.length - 1] === lowerChar) {
+        // return true
+        return true;
+    }
+    // else determine if last character of string != char
+    else {
+        //return false
+        return false;
+    }
 
 
     // YOUR CODE ABOVE HERE //

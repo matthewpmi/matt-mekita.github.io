@@ -148,7 +148,8 @@ function endsWith(string, char) { // must be case insensitive
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
 
-
+    // return stringOne concatenated with stringTwo
+    return stringOne + stringTwo;
 
     // YOUR CODE ABOVE HERE //
 }
@@ -166,7 +167,10 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
-
+    // create variable to store all strings in array args joined
+    var joined = args.join('');
+    // return all strings in array args joined
+    return joined;
 
     // YOUR CODE ABOVE HERE //
 }
@@ -183,6 +187,21 @@ function join(stringOne, stringTwo) {
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
 
+    // determine if stringOne is longer than stringTwo
+    if (stringOne.length > stringTwo.length) {
+        // return stringOne
+        return stringOne;
+    }
+    // else determine if stringTwo is longer than stringOne
+    else if (stringTwo.length > stringOne.length) {
+        //return stringTow
+        return stringTwo;
+    }
+    // else determine if strings are equal length 
+    else {
+        // return equal
+        return 'equal';
+    }
 
 
     // YOUR CODE ABOVE HERE //
@@ -198,8 +217,21 @@ function longest(stringOne, stringTwo) {
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
 
-
-
+    // determine if stringOne is higher in alphabetical order than stringTwo
+    if (stringOne < stringTwo) {
+        // return 1
+        return 1;
+    }
+    // else determine if stringTwo is higher in alphabetical order than stringOne
+    else if (stringTwo < stringOne) {
+        // return -1
+        return -1;
+    }
+    // else determine the two strings are equal in alphabetical order
+    else {
+        // return 0
+        return 0;
+    }
     // YOUR CODE ABOVE HERE //
 }
 
@@ -214,7 +246,21 @@ function sortAscending(stringOne, stringTwo) {
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
 
-
+    // determine if stringOne is lower in alphabetical order than stringTwo
+    if (stringOne > stringTwo) {
+        // return 1
+        return 1;
+    }
+    // else determine if stringTwo is lower in alphabetical order than stringOne
+    else if (stringTwo > stringOne) {
+        // return -1
+        return -1;
+    }
+    // else determine the two strings are equal in alphabetical order
+    else {
+        // return 0
+        return 0;
+    }
 
 
     // YOUR CODE ABOVE HERE //

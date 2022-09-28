@@ -38,7 +38,10 @@ function printArrayValuesInReverse(array) {
 function getObjectKeys(object) {
   // YOUR CODE BELOW HERE //
   
-  
+  // create output array
+  var keys = [];
+  //iterate through current object key
+
   
   
   // YOUR CODE ABOVE HERE //
@@ -101,7 +104,7 @@ function getObjectLength(object) {
 function printObjectValuesInReverse(object) {
   // YOUR CODE BELOW HERE //
   
-  
+  // push object values into an array and loop over the array backwords to print each value
   
   
   // YOUR CODE ABOVE HERE //

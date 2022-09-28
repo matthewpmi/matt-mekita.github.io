@@ -36,7 +36,31 @@
 function greeter(hour) {
     // YOUR CODE BELOW HERE //
     
-    
+    // determine if hour is between 0 and 24
+    if (hour > 24 || hour < 0) {
+        // log error message
+        console.log('invalid hour')
+    }
+    // else determine if hour is in the morning
+    else if (hour <= 11) {
+        // log morning message
+        console.log('Good Morning!')
+    }
+    // else determine if hour is in the afternoon
+    else if (hour <= 16) {
+        // log afternoon message
+        console.log('Good Afternoon!')
+    }
+    // else determine if hour is in the evening
+    else if (hour <= 21) {
+        // log evening message
+        console.log('Good Evening!')
+    }
+    // else determine if hour is in the night
+    else {
+        // log night message
+        console.log('Good Night!')
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -52,8 +76,9 @@ function greeter(hour) {
  * var today = new Date();
  * var hour = today.getHours();
  */
-
-greeter(11);
+var today = new Date();
+var hour = today.getHours();
+greeter(hour);
 
 
 

@@ -119,8 +119,16 @@ function printObjectValues(object) {
 function getObjectLength(object) {
   // YOUR CODE BELOW HERE //
   
-  // return number of key/value pairs in object
-  return Object.keys(object).length
+  // create counting variable starting at zero
+  var count = 0;
+  // iterate over object keys
+  for (var key in object) {
+    // increment count for each key
+    count++;
+  }
+  // return count
+  return count;
+  
   
   
   // YOUR CODE ABOVE HERE //

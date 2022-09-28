@@ -103,7 +103,11 @@ function getObjectValues(object) {
 function printObjectValues(object) {
   // YOUR CODE BELOW HERE //
   
-  
+  // iterate through object
+  for (var key in object) {
+    // log object values
+    console.log(object[key]);
+  }
   
   
   // YOUR CODE ABOVE HERE //
@@ -115,7 +119,8 @@ function printObjectValues(object) {
 function getObjectLength(object) {
   // YOUR CODE BELOW HERE //
   
-  
+  // return number of key/value pairs in object
+  return Object.keys(object).length
   
   
   // YOUR CODE ABOVE HERE //
@@ -129,7 +134,18 @@ function printObjectValuesInReverse(object) {
   // YOUR CODE BELOW HERE //
   
   // push object values into an array and loop over the array backwords to print each value
-  
+  // create array variable to store object values
+  var values = [];
+  // iterate over object
+  for (var key in object) {
+    // push object values to values variable
+    values.push(object[key]);
+  }
+  // iterate over array backwords
+  for (var i = values.length - 1; i >= 0; i--) {
+    // log values to console backwords
+    console.log(values[i]);
+  }
   
   // YOUR CODE ABOVE HERE //
 }

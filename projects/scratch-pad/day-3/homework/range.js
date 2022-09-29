@@ -26,14 +26,14 @@ function range(start, end) {
     
     // create array variable to store range numbers
     var rangeArray = [];
-    // iterate over range between to args if start is larger than end
+    // iterate over range between to args if end is larger than start
     if (end > start){
         for (var i = start; i <= end; i++){
             // push numbers in range to rangeArray
             rangeArray.push(i);
         }
     }
-    // iterate over range between to args if end is larger than start
+    // iterate over range between to args backwords if start is larger than end
     if (start > end){
         for (var i = start; i >= end; i--){
             // push numbers in range to rangeArray

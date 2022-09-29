@@ -14,11 +14,11 @@
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
     
-    // return a *function*
+    // return a function that takes a parameter
     return function(num){
+        // test if num is greater than base; return
         return num > base;
     }
-    
     
     // YOUR CODE ABOVE HERE //
 }
@@ -31,7 +31,11 @@ function createGreaterThanFilter(base) {
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
     
-    
+    // return a function that takes a parameter
+    return function(num){
+        // test if num is less than base; return
+        return num < base;
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -47,6 +51,15 @@ function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
     
     
+    // convert starsWith character to lower case
+    var lowerStart = startsWith.toLowerCase();
+    // return a function that takes a parameter string
+    return function(string){
+        // convert string to lowercase
+        var lowerString = string.toLowerCase();
+        // test if lowerString first character is equal to lowerStart; return
+        return lowerString[0] === lowerStart;
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -62,6 +75,16 @@ function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
     
     
+    // convert starsWith character to lower case
+    var lowerEnd = endsWith.toLowerCase();
+    // return a function that takes a parameter string
+    return function(string){
+        // convert string to lowercase
+        var lowerString = string.toLowerCase();
+        // test if lowerString last character is equal to lowerEnd; return
+        return lowerString[string.length - 1] === lowerEnd;
+    }
+    
     
     
     // YOUR CODE ABOVE HERE //
@@ -76,9 +99,15 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) { // modify is a function
     // YOUR CODE BELOW HERE //
-    
-    
-    
+    // create variable to store modified array
+    var modArray = [];
+    // iterate over strings array
+    for (var i = 0; i < strings.length; i++){
+        // pass strings elements through modify funciton
+        // push modified strings to modArray
+        modArray.push(modify(strings[i]));
+    }
+    return modArray;
     
     // YOUR CODE ABOVE HERE //
 }
@@ -94,9 +123,18 @@ function modifyStrings(strings, modify) { // modify is a function
  */
 function allStringsPass(strings, test) { // test is a function
     // YOUR CODE BELOW HERE //
-    
-    
-    
+    // create counting variable starting at zero
+    var count = 0;
+    // iterate over strings array
+    for (var i = 0; i < strings.length; i++){
+        // check if each element of strings arrary run through test function is true
+        if (test(strings[i])) {
+            // increment count for each true return
+            count++;
+        }
+    }
+    // check if count is equal to strings array length; return
+    return count === strings.length;
     
     // YOUR CODE ABOVE HERE //
 }

@@ -123,7 +123,7 @@ function modifyStrings(strings, modify) { // modify is a function
  */
 function allStringsPass(strings, test) { // test is a function
     // YOUR CODE BELOW HERE //
-    // create counting variable starting at zero
+    // create counting variable starting at zero to accumulate all of the true outcomes
     var count = 0;
     // iterate over strings array
     for (var i = 0; i < strings.length; i++){

@@ -60,13 +60,11 @@ function makeContactList() {
             contacts.push(contact); 
         },
         // create findContact property with function as value that takes a parameter fullName
-        findContact: function(fullName){
-            // split fullName at space and assign it to array
-            var fullNameArray = fullName.split(' ');
+        findContact: function(fullName){     
             // iterate over contacts array
             for (var i = 0; i < contacts.length; i++){
                 // check if fullName corresponds to any nameFirst + nameLast in contact array
-                if (contacts[i].nameFirst === fullNameArray[0] && contacts[i].nameLast === fullNameArray[1]){
+                if (contacts[i].nameFirst + ' ' + contacts[i].nameLast === fullName){
                     // return applicable contacts
                     return contacts[i];
                 }

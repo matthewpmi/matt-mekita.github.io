@@ -52,7 +52,7 @@ delete team.name; // the name property is deleted from the team object using the
 
 typeof team; // object -> returns the datatype of the given variable/value after 'typeof'
 
-// Ternary (or conditional) operators
+// 6 Ternary (or conditional) operators
 var oldEnough = age >= 21 ? 'yes drink' : 'no leave'; // similar to an if/else statement, if age >= 21 evaulates to true the first value (before the :) will be returned, else if the conditon evaluates to false the second value will be returned
 
 

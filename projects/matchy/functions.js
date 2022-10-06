@@ -34,7 +34,8 @@ function search(array, string){
 function replace(array, string, object){
 //     var obj = search(array, string);
 //     if (obj !== null){
-//         return obj = object;
+//         obj = object;
+//         return; 
 //     }
 //     return null;
 // }

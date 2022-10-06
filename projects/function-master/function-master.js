@@ -3,7 +3,11 @@
 //////////////////////////////////////////////////////////////////////
 
 function objectValues(object) {
-
+    var array = [];
+    for(var key in object){
+       array.push(object[key]);
+    }
+    return array;
 } 
 
 //////////////////////////////////////////////////////////////////////
@@ -11,7 +15,12 @@ function objectValues(object) {
 //////////////////////////////////////////////////////////////////////
 
 function keysToString(object) {
-
+    var string = '';
+    for(var key in object){
+        string += key + " ";
+    }
+    var result = string.slice(0, -1)
+    return result;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -19,7 +28,14 @@ function keysToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function valuesToString(object) {
-    
+    var string = '';
+    for(var key in object){
+        if(typeof object[key] === "string"){
+            string += object[key] + " ";
+        }
+    }
+    var result = string.slice(0, -1)
+    return result;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -27,7 +43,11 @@ function valuesToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function arrayOrObject(collection) {
-    
+    if(Array.isArray(collection)){
+        return 'array';
+    } else {
+        return 'object';
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -35,7 +55,9 @@ function arrayOrObject(collection) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeWord(string) {
-    
+    var firstChar = string.charAt(0).toUpperCase();
+    string = string.slice(1, string.length);
+    return firstChar + string;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -43,7 +65,16 @@ function capitalizeWord(string) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeAllWords(string) {
-    
+    var myArray = string.split(" ");
+    var myString = '';
+    for(var i = 0; i < myArray.length; i++){
+        var firstChar = myArray[i].charAt(0).toUpperCase();
+        var newWord = myArray[i].slice(1, myArray[i].length);
+        var finalWord = firstChar + newWord;
+        myString +=  " " + finalWord;         
+    }
+    var result = myString.slice(1, myString.length)
+    return result;
 }
 
 //////////////////////////////////////////////////////////////////////

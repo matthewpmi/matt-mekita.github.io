@@ -183,6 +183,24 @@ function isFriend(name, object) {
 // Function 13 - Non-Friends /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+function nonFriends(name, array) {
+    var newArray = [];
+    var myArray = [];
+    for (var i = 0; i < array.length; i++) {
+        if (array[i].name === name) {
+            newArray = array[i].friends;
+        }
+    }
+    for (var i = 0; i < array.length; i++) {
+            if (newArray.indexOf(array[i].name) === -1 && array[i].name !== name){
+               myArray.push(array[i].name)
+            }
+        
+    }
+  return myArray;
+}
+
+
 // function nonFriends(name, array) {
 //     var newArray = [];
 //     var myArray = [];
@@ -199,6 +217,8 @@ function isFriend(name, object) {
 //         }
 //     }
 // }
+
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 14 - Update Object ///////////////////////////////////////

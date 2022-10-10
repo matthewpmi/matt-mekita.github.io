@@ -194,8 +194,7 @@ function nonFriends(name, array) {
     for (var i = 0; i < array.length; i++) {
             if (newArray.indexOf(array[i].name) === -1 && array[i].name !== name){
                myArray.push(array[i].name)
-            }
-        
+        }
     }
   return myArray;
 }
@@ -249,17 +248,14 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-    for (var i = 0; i < array.length; i++){
-      for (var j = 0; j < array.length; j++){
-        if (i !== j){
-          if (array[i] === array[j]){
-              array.splice(i, 1);
+    var newArray = [];
+    for (var i = 0; i < array.length; i++) {
+        if (newArray.indexOf(array[i]) === -1){
+           newArray.push(array[i])
+            }
           }
+          return newArray;
       }
-  }
-}
-return array;
-}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////

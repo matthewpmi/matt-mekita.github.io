@@ -1,9 +1,15 @@
 ////////////////////////////////////////////////////////////////////////////////
 // min /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
-function min() {
-
+// create funciton min with 2 parameters
+function min(x, y) {
+  // determine if x is greater than y and return y if true
+  if (x > y){
+    return y;
+    // else return x if its not greater than y
+  } else {
+    return x;
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -17,17 +23,40 @@ function isEven() {
 ////////////////////////////////////////////////////////////////////////////////
 // countChars //////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
-function countChars() {
-
+// create funciton countChars that takes a string and a character as parameters
+function countChars(string, char) {
+  // create counting variable to add up number of chars in string
+  var count = 0;
+  // create for loop to iterate through string
+  for (var i = 0; i < string.length; i++){
+    // determine if current character is equal to given char
+    if (string[i] === char){
+      // add 1 to counting variable
+      count++;
+    }
+  }
+  // return count
+  return count;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // countBs /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function countBs() {
-
+// create funciton countBs that takes a string as parameter
+function countBs(string) {
+  // create counting variable to add up number of capital b's
+  var count = 0;
+  // create for loop to iterate through string
+  for (var i = 0; i < string.length; i++){
+    // determine if current character is capital b
+    if (string[i] === 'B'){
+      // add 1 to counting variable
+      count++;
+    }
+  }
+  // return count
+  return count;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

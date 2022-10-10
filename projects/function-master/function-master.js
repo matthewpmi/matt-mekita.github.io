@@ -108,7 +108,7 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 // Function 7 - Welcome Message //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+// create function welcomeMessage with object as parameter
 function welcomeMessage(object) {
     // return object name value capitalized inside of given string
     return "Welcome " + object.name.charAt(0).toUpperCase() + object.name.slice(1, object.name.length) + "!";
@@ -117,7 +117,7 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 // Function 8 - Profile Info /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+// create function profileInfo with object as parameter
 function profileInfo(object) {
     // return object name and species capitlazed inside of given string
     return object.name.charAt(0).toUpperCase() + object.name.slice(1, object.name.length) + ' is a ' + object.species.charAt(0).toUpperCase() + object.species.slice(1, object.species.length)
@@ -126,15 +126,20 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 // Function 9 - Maybe Noises /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+// create function maybeNoises with object as parameter
 function maybeNoises(object) {
+    // determine if given object has property noises
      if (object.hasOwnProperty('noises')){
+        // determine if the length of noises is 0
          if (object.noises.length === 0){
+            // return message
             return "there are no noises";
+            // else if noises does not equal 0 return string with all noises seperated by spaces
         } else {
             return object.noises.join(" ");
         }
     } else{
+        // else if noises is not in object return message
         return "there are no noises";
     }
 }
@@ -142,14 +147,18 @@ function maybeNoises(object) {
 //////////////////////////////////////////////////////////////////////
 // Function 10 - Has Words ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+// create function hasWord with parameters string, word
 function hasWord(string, word) {
+    // split string into array at spaces
     var myArray = string.split(" ");
+    // iterate through myArray 
     for (var i = 0; i < myArray.length; i++) {
+        // determine if word is in myArray and return true
         if (myArray[i] === word){
             return true;
         }   
     }
+    // return false if word is not in myArray
     return false;
 }
 
@@ -157,45 +166,61 @@ function hasWord(string, word) {
 //////////////////////////////////////////////////////////////////////
 // Function 11 - Add Friend //////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+// create function addFriend with parameters name, object
 function addFriend (name, object) {
+    // in object's friends property push name
     object.friends.push(name);
+    // return object
     return object;
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 12 - Is Friend ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+// create function isFriend with parameters name, object
 function isFriend(name, object) {
+    // determine if given object has property friends
     if (object.hasOwnProperty('friends')){
+        // iterate through friends property
         for (var i = 0; i < object.friends.length; i++) {
+            // determine if given name is in friends property and return true
             if (object.friends[i] === name) {
                 return true;
             }
         }
+        // return false if for loop returns nothing
         return false;
     }
+    // return false if friends not in object
     return false;
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 13 - Non-Friends /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+// create function nonFriends with parameter name, array
 function nonFriends(name, array) {
+    // create newArray to hold friends array
     var newArray = [];
+    // create myArray to hold final array with all non friends
     var myArray = [];
+    // iterate through given array of objects
     for (var i = 0; i < array.length; i++) {
+        // determine if current array element's name property is same as given name
         if (array[i].name === name) {
+            // assign current object friends array to newArray
             newArray = array[i].friends;
         }
     }
+    // iterate through given array of objects
     for (var i = 0; i < array.length; i++) {
+        // determine if name property of current array element is in newArray and it's not the same as the given name
             if (newArray.indexOf(array[i].name) === -1 && array[i].name !== name){
+                // push current array element name to myArray
                myArray.push(array[i].name)
         }
     }
+    // return myArray with all non friends
   return myArray;
 }
 
@@ -222,38 +247,49 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 // Function 14 - Update Object ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+// create function updateObject with parameters object, key, value
 function updateObject(object, key, value) { 
+    // add given key and value to object
         object[key] = value;
+        // return updated object
         return object;
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 15 - Remove Properties ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+// create function removeProperties with parameters object, array
 function removeProperties(object, array) {
+    // iterate through given object
     for (var key in object) {
+        // iterate through given array for each key in object
         for (var i = 0; i < array.length; i++) {
+            // determine if current object key is equal to current array
             if (key === array[i]) {
+                // remove object
                 delete object[key];
             }
         }
     }
+    // return object with keys removed that were in array
     return object;
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 16 - Dedup ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+// create function dedup with parameter array
 function dedup(array) {
+    // create newArray to hold new array without duplicates
     var newArray = [];
+    // iterate through given array
     for (var i = 0; i < array.length; i++) {
+        // determeine if array element is already in newArray and if it's not push it
         if (newArray.indexOf(array[i]) === -1){
            newArray.push(array[i])
             }
           }
+          // return newArray
           return newArray;
       }
 

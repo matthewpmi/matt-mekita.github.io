@@ -45,6 +45,20 @@ _.identity = function(value){
 * _.typeOf([1,2,3]) -> "array"
 */
 
+_.typeOf = function(value){
+    // determine if value is array and return array
+    if (Array.isArray(value)){
+        return 'array';
+    }
+    // else determine if value is null and return null
+    else if (value === null){
+        return 'null';
+    }
+    // else return typeof value
+    else {
+        return typeof value;
+    }
+}
 
 /** _.first
 * Arguments:
@@ -64,6 +78,27 @@ _.identity = function(value){
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
 
+_.first = function(array, num){
+    // determine if array is an array 
+    if (!Array.isArray(array)){
+        return [];
+    }
+    // else determine if num is a number and return 1st index of array if not
+     else if (!num){
+        return array[0];
+    }
+    // determine if num is greater than 0 and return array from [0] to [num]
+    else {
+         if (num > 0){
+            return array.slice(0, num);
+         }
+         // else determine if numb is less than 0 and return array from [-1] to [num]
+         else if (num < 0){
+            return array. slice(-1, num);
+         }
+
+    }
+}
 
 /** _.last
 * Arguments:
@@ -83,6 +118,30 @@ _.identity = function(value){
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function(array, num){
+    // determine if array is an array 
+    if (!Array.isArray(array)){
+        return [];
+    }
+    // else determine if num is a number and return 1st index of array if not
+     else if (!num){
+        return array[array.length - 1];
+    }
+    else {
+        // else determine if num is greater than array length and return array
+        if (num > array.length){
+            return array;
+        }
+        // determine if num is greater than 0 and return array from [num] to [-1]
+         else if (num > 0){
+            return array.slice(-num);
+         }
+         // else determine if num is less than 0 and return array from [-1] to [num]
+         else if (num < 0){
+            return array. slice(num, 0);
+         }
+    }
+}
 
 /** _.indexOf
 * Arguments:

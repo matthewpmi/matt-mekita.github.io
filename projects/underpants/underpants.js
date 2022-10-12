@@ -428,14 +428,14 @@ _.pluck = function(array, prop){
     var result = [];
     // iterate over array of objects
     for (var i = 0; i < array.length; i++){
-        // run array element through map function and update result to result
-        result = _.map(array[i], function(e, k) {
+        // run array element through map function and push result to myArray
+        myArray.push(_.map(array[i], function(e, k) {
+            // determine if given prop is equal to current iteration prop
             if (prop === k){
+                // return current iteration prop value
                 return e;
             }
-        })
-        // push result index 0 to myArray
-        myArray.push(result[0])
+        })[0])       
     }
     // return myArray
     return myArray;

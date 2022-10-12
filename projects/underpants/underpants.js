@@ -2,6 +2,9 @@
 // other things. For more info:
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
+
+// const { push } = require("opspark/controller/publish");
+
 // declare variable _ and assign it to an empty object
 var _ = {};
 
@@ -117,7 +120,7 @@ _.first = function(array, num){
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
-
+// create function _.last that takes parameters array, num
 _.last = function(array, num){
     // determine if array is an array 
     if (!Array.isArray(array)){
@@ -159,7 +162,18 @@ _.last = function(array, num){
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
-
+// create function _.indexOf that takes parameters array, value
+_.indexOf = function(array, value){
+    // iterate through given array
+    for (var i = 0; i < array.length; i++){
+        // determine if value is in array and return it's index
+        if (array[i] === value){
+            return i;
+        }
+    }
+    // return -1 if for loop returns nothing
+    return -1;
+}
 /** _.contains
 * Arguments:
 *   1) An array
@@ -175,6 +189,18 @@ _.last = function(array, num){
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
+// create function _.contains that takes parameters array, value
+_.contains = function(array, value){
+    // iterate through given array
+    for (var i = 0; i < array.length; i++){
+        // determine if value is in array and return true
+        if (array[i] === value){
+            return true;
+        }
+    }
+    // return false if for loop returns nothing
+    return false;
+}
 
 /** _.each
 * Arguments:
@@ -191,7 +217,7 @@ _.last = function(array, num){
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
-
+// create _.each function with paramters collection, func
 _.each = function(collection, func){
     // determine if collection is array
     if (Array.isArray(collection)){
@@ -220,7 +246,20 @@ _.each = function(collection, func){
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
-
+// create function _.unique with parameter array
+_.unique = function(array){
+    // create new variable to hold new array
+    var myArray = [];
+    // iterate through aray
+    for (var i = 0; i < array.length; i++){
+        // use _.index of to determine if current array element is in myArray and push current element if it's not
+        if (_.indexOf(myArray, array[i]) === -1) {
+            myArray.push(array[i]);
+        }
+    }
+    // return new array with no dupes
+    return myArray;
+}
 
 /** _.filter
 * Arguments:
@@ -237,6 +276,37 @@ _.each = function(collection, func){
 * Extra Credit:
 *   use _.each in your implementation
 */
+// create function _.filter with parameter array, function
+_.filter = function(array, func){
+    // create variable to hold new array
+    var myArray = [];
+    // iterate over array
+    for (var i = 0; i < array.length; i++){
+        // determine if func call returns true and push to new array
+        // call func with paramters current array element, it's index, array
+        if (func(array[i], i, array)){
+            myArray.push(array[i])
+        };
+    }
+    // return new array after running through func
+    return myArray;
+}
+// ** ask alex about using _.each function in implementation
+//
+// _.filter = function(array){
+//     // create variable to hold new array
+//     var myArray = [];
+//     // iterate over array
+//     for (var i = 0; i < array.length; i++){
+//         // determine if func call returns true and push to new array
+//         // call func with paramters current array element, it's index, array
+//         if (_.each(array[i], i, array)){
+//             myArray.push(array[i])
+//         };
+//     }
+//     // return new array after running through func
+//     return myArray;
+// }
 
 
 /** _.reject
@@ -251,7 +321,20 @@ _.each = function(collection, func){
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-
+// create function _.reject with parameters array, function
+_.reject = function(array, func){
+    // create variable to hold new array
+    var myArray = [];
+    // iterate through array
+    for (var i = 0; i < array.length; i++){
+        // determine if func returns false and push to myArray
+        if (!func(array[i], i, array)){
+            myArray.push(array[i])
+        }
+    }
+    // return new array
+    return myArray;
+}
 
 /** _.partition
 * Arguments:
@@ -271,7 +354,24 @@ _.each = function(collection, func){
 *   }); -> [[2,4],[1,3,5]]
 }
 */
-
+// create function _.partition with paramters array, function
+_.partition = function(array, func){
+    // create variable to hold new array with 2 sub-arrays
+    var myArray = [[],[]];
+    // iterate through given array
+    for (var i = 0; i < array.length; i++){
+        // determine if func returns truthy and push to first sub-array
+        if (func(array[i], i, array)) {
+            myArray[0].push(array[i])
+        }
+        // else if falsy push to second sub-array
+        else {
+            myArray[1].push(array[i])
+        }
+    }
+    // return new array with partitions
+    return myArray;
+}
 
 /** _.map
 * Arguments:
@@ -288,7 +388,27 @@ _.each = function(collection, func){
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-
+// create function _.map with parameters collection, function
+_.map = function(collection, func){
+    // create variable to hold func calls in array
+    var myArray = [];
+    // determine if collection is array
+    if (Array.isArray(collection)){
+        // iterate through array and call function for each element and push result to myArray
+        for (var i = 0; i < collection.length; i++){
+            myArray.push(func(collection[i], i, collection))            
+        }
+    }
+    // else if object
+    else {
+        // iterate through object and call function for each property and push result to myArray
+        for (var key in collection) {
+            myArray.push(func(collection[key], key, collection))
+        }
+    }
+    // return new array with func calls
+    return myArray;
+}
 
 /** _.pluck
 * Arguments:
@@ -300,7 +420,21 @@ _.each = function(collection, func){
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
-
+// create function _.pluck with parameters array of objects, property
+_.pluck = function(array, prop){
+    // create variable to hold prop values in array
+    var myArray = '';
+    // iterate over array of objects
+    for (var i = 0; i < array.length; i++){
+        // run array element through map function and push result to myArray
+        myArray += (_.map(array[i], function(e, k) {
+            if (prop === k){
+                return e;
+            }
+        }))
+    }
+    return myArray;
+}
 
 /** _.every
 * Arguments:
@@ -322,6 +456,47 @@ _.each = function(collection, func){
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
+
+_.every = function(collection, func){
+
+    // determine if func is not provided
+    if (func === undefined){
+        // determine if collection is an aray
+        if (Array.isArray(collection)){
+            // itereate through given array
+            for (let i = 0; i < collection.length; i++){
+                if (!collection[i]){
+                    return false
+                }
+            }
+        }  else {
+            for (var key in collection){
+                if (!collection[key]){
+                    return false;
+                }
+            }
+        }
+    }
+    if (func){
+        if (Array.isArray(collection)){ 
+            for (let i = 0; i < collection.length; i++){
+                if (func(collection[i], i, collection) === false){
+                    return false;
+                }
+            }
+        }
+        // else object
+        else {
+            for (var key in collection){
+                if (func(collection[key], key, collection) === false){
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
 
 
 /** _.some

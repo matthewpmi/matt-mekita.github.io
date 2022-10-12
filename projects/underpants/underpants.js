@@ -423,16 +423,21 @@ _.map = function(collection, func){
 // create function _.pluck with parameters array of objects, property
 _.pluck = function(array, prop){
     // create variable to hold prop values in array
-    var myArray = '';
+    var myArray = [];
+    // create variable to holl result of function in map function
+    var result = [];
     // iterate over array of objects
     for (var i = 0; i < array.length; i++){
-        // run array element through map function and push result to myArray
-        myArray += (_.map(array[i], function(e, k) {
+        // run array element through map function and update result to result
+        result = _.map(array[i], function(e, k) {
             if (prop === k){
                 return e;
             }
-        }))
+        })
+        // push result index 0 to myArray
+        myArray.push(result[0])
     }
+    // return myArray
     return myArray;
 }
 
@@ -465,35 +470,47 @@ _.every = function(collection, func){
         if (Array.isArray(collection)){
             // itereate through given array
             for (let i = 0; i < collection.length; i++){
+                // if current collection element is falsy and return false
                 if (!collection[i]){
                     return false
                 }
             }
-        }  else {
+        }  
+        // else if object
+        else {
+            // iterate through object
             for (var key in collection){
+                // determine if current collection value is falsy and return false
                 if (!collection[key]){
                     return false;
                 }
             }
         }
     }
+    // determine if func is truthy
     if (func){
+        // determine if it's an array
         if (Array.isArray(collection)){ 
+            // iterate through array
             for (let i = 0; i < collection.length; i++){
+                // determine if result of func is false and return false
                 if (func(collection[i], i, collection) === false){
                     return false;
                 }
             }
         }
-        // else object
+        // else if object
         else {
+            // iterate through object
             for (var key in collection){
+                // determine if result of func is false and return false
                 if (func(collection[key], key, collection) === false){
                     return false;
                 }
             }
         }
     }
+    // if no if statement returns, return true
     return true;
 }
 

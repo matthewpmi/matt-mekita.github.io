@@ -420,25 +420,31 @@ _.map = function(collection, func){
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
+
+// _.pluck = function(array, prop){
+//     // create variable to hold prop values in array
+//     var myArray = [];
+//     // iterate over array of objects
+//     for (var i = 0; i < array.length; i++){
+//         // run array element through map function and push result to myArray
+//         myArray.push(_.map(array[i], function(e, k) {
+//             // determine if given prop is equal to current iteration prop
+//             if (prop === k){
+//                 // return current iteration prop value
+//                 return e;
+//             }
+//         })[0])       
+//     }
+//     // return myArray
+//     return myArray;
+// }
+
 // create function _.pluck with parameters array of objects, property
-_.pluck = function(array, prop){
-    // create variable to hold prop values in array
-    var myArray = [];
-    // create variable to holl result of function in map function
-    var result = [];
-    // iterate over array of objects
-    for (var i = 0; i < array.length; i++){
-        // run array element through map function and push result to myArray
-        myArray.push(_.map(array[i], function(e, k) {
-            // determine if given prop is equal to current iteration prop
-            if (prop === k){
-                // return current iteration prop value
-                return e;
-            }
-        })[0])       
-    }
-    // return myArray
-    return myArray;
+_.pluck = function(array, property) {
+    // return map function with function returning an array with given property at each array index
+    return _.map(array, function(e){
+        return e[property];
+    })
 }
 
 /** _.every
@@ -598,7 +604,47 @@ _.some = function(collection, func){
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
+// var nums = [1, 2, 3, 4];
+// var sum = nums.reduce(function(acc, current, index, array){
+//     acc += current; // acc = 0 + 1
+//     return acc; // 1
+// },0);
+// // invoke reduce
+//     // seed or no seed? -> seed = 0
+//     // result = 0
 
+//     // for loop
+//         // 0
+//             // result = func(result, /crrent item/, /current index/, /array/)
+// //                               0       1               0          [1, 2, 3, 4]
+//     // return result
+
+_.reduce = function(array, func, seed){
+    // create variable result
+    var result;
+    // determine if seed is not given
+    if (seed === undefined){
+        // assign result to zero index of array
+        result = array[0];
+        // ieterate through array starting at 1 index
+        for(var i = 1; i < array.length; i++){
+            // update result to func return
+            result = func(result, array[i], i, array);
+        }
+    }
+    // else if seed is given
+    else {
+        // set result equal to seed
+        result = seed;
+        // iterate through array
+        for (var i = 0; i < array.length; i++){
+            // update result to func return
+            result = func(result, array[i], i, array);
+        }
+    }
+    // return result
+    return result;
+}
 
 /** _.extend
 * Arguments:
@@ -614,6 +660,13 @@ _.some = function(collection, func){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+// creat function _.extend with parameters object, object, indefinite objects
+_.extend = function(object1, object2, ...object3){
+    // use Object.assign to assign object2 and object3 to object1
+    Object.assign(object1, object2, ...object3);
+    // return object1
+    return object1;
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////

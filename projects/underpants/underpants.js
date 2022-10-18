@@ -97,9 +97,8 @@ _.first = function(array, num){
          }
          // else determine if numb is less than 0 and return array from [-1] to [num]
          else if (num < 0){
-            return array. slice(-1, num);
+            return [];
          }
-
     }
 }
 
@@ -141,7 +140,7 @@ _.last = function(array, num){
          }
          // else determine if num is less than 0 and return array from [-1] to [num]
          else if (num < 0){
-            return array. slice(num, 0);
+            return [];
          }
     }
 }
@@ -292,20 +291,12 @@ _.filter = function(array, func){
     return myArray;
 }
 // ** ask alex about using _.each function in implementation
-//
-// _.filter = function(array){
-//     // create variable to hold new array
-//     var myArray = [];
-//     // iterate over array
-//     for (var i = 0; i < array.length; i++){
-//         // determine if func call returns true and push to new array
-//         // call func with paramters current array element, it's index, array
-//         if (_.each(array[i], i, array)){
-//             myArray.push(array[i])
-//         };
+
+// _.filter = function(array, func){
+//     if (_.each(array, func(e))) {
+//         return
 //     }
-//     // return new array after running through func
-//     return myArray;
+        
 // }
 
 
@@ -469,7 +460,6 @@ _.pluck = function(array, property) {
 */
 
 _.every = function(collection, func){
-
     // determine if func is not provided
     if (func === undefined){
         // determine if collection is an aray

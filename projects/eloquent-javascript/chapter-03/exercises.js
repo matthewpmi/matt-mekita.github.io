@@ -15,10 +15,23 @@ function min(x, y) {
 ////////////////////////////////////////////////////////////////////////////////
 // isEven //////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
-function isEven() {
-
-}
+// create function isEven with parameter
+function isEven(n) {
+  // determine if n is 0 and return true (even)
+  if(n === 0){
+    return true;
+    // determine if n is 1 and return false (odd)
+  } else if (n === 1){
+    return false;
+  }
+  // determine if n is less than 0 and return isEven with n + 2 as parameter
+  if(n < 0){
+    return isEven(n+2)
+    // determine if n is greater than 0 and return isEven with n - 2 as parameter
+  } else if (n > 0){
+    return isEven(n-2);
+  }
+};
 
 ////////////////////////////////////////////////////////////////////////////////
 // countChars //////////////////////////////////////////////////////////////////

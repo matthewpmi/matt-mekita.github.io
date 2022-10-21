@@ -99,24 +99,48 @@ function listToArray(list, array=[]) {
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() {
-
+function prepend(element, list) {
+  return {
+    value: element, 
+    rest: list
+  };
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function nth() {
-
+function nth(list, number) {
+  return listToArray(list)[number];
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual() {
-
+function deepEqual(x, y) {
+  // determine if x and y are both not objects
+  if (typeof x !== 'object' && typeof y !== 'object'){
+    return x === y;
+  }
+  // determine if EITHER x or y is not an object
+  if (typeof x !== 'object' || typeof y !== 'object'){
+    return false;
+  }
+  // create arrays of each object's keys
+  let xKeys = Object.keys(x); // [array of keys in object]
+  let yKeys = Object.keys(x); //  ^^^^^^^^^^^^^^^^^^^^
+  // determine if xKeys and yKeys don't have the same length
+  if (xKeys.length !== yKeys.length){
+    return false;
+  }
+  // iterate through xKeys to see if properties match
+  for (let i = 0; i < xKeys.length; i++){
+    if (!yKeys.includes(xKeys[i]) || !deepEqual(x[xKeys[i]], y[xKeys[i]]) ){
+      return false;
+    }
+  }
+  return true;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

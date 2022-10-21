@@ -369,20 +369,83 @@ var augmentElements = function(array, aug) {
 // 33. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
-var minimizeZeroes = function(array) {
+var minimizeZeroes = function(array, output=[]) {
+  if (array.length === 0){
+    return output;
+  }
+  if (array[0] === 0 && array[0] !== output[output.length - 1]){
+    output.push(array[0]);
+  } else if (array[0] !== 0){
+    output.push(array[0]);
+  }
+  return minimizeZeroes(array.slice(1), output)
 };
 
 // 34. Alternate the numbers in an array between positive and negative regardless of
 // their original sign.  The first number in the index always needs to be positive.
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
-var alternateSign = function(array) {
-};
+var alternateSign = function(array, output=[]) {
+  if(array.length === 0){
+    return output;
+  }
+  if(output.length === 0){
+    if(array[0] > 0){
+      output.push(array[0])
+    }
+    if(array[0] < 0){
+      output.push(array[0] - array[0] * 2)
+    }
+  } else if (output.length % 2 !== 0 && array[0] > 0){
+    output.push(array[0] - array[0] * 2)
+  } else if (output.length % 2 !== 0 && array[0] < 0){
+    output.push(array[0])
+  } else if (output.length % 2 === 0 && array[0] < 0){
+    output.push(array[0] - array[0] * 2)
+  } else if (output.length % 2 === 0 && array[0] > 0){
+    output.push(array[0])
+  }
+  return alternateSign(array.slice(1), output)
+  };
 
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
-var numToText = function(str) {
+var numToText = function(str, newStr='') {
+  if(str.length === 0){
+    return newStr;
+  }
+  if(str[0] === '1') {
+    newStr += 'one';
+  }
+  else if(str[0] === '2') {
+    newStr += 'two';
+  }
+  else if(str[0] === '3') {
+    newStr += 'three';
+  }
+  else if(str[0] === '4') {
+    newStr += 'four';
+  }
+  else if(str[0] === '5') {
+    newStr += 'five';
+  }
+  else if(str[0] === '6') {
+    newStr += 'six';
+  }
+  else if(str[0] === '7') {
+    newStr += 'seven';
+  }
+  else if(str[0] === '8') {
+    newStr += 'eight';
+  }
+  else if(str[0] === '9') {
+    newStr += 'nine';
+  }
+  else {
+    newStr += str[0];
+  }
+  return numToText(str.slice(1), newStr);
 };
 
 // *** EXTRA CREDIT ***

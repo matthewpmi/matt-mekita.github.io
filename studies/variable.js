@@ -9,6 +9,8 @@
  * 
  * 3: Hoisting variables are hoisted to the top of the code but not initialized(assigned)
  * 
+ * 4: The let and const keyword variable types are 'block' scoped meaning they are confined to blocks of code like if statements and for loops.
+ * 
  */
 
 // 1 Declaration
@@ -18,6 +20,10 @@ var age; // variable age is declared but not assinged a value
 age = 35; // variable age is now assigned a value
 // OR
 var size = 'medium'; // variable size is declared AND assigned to a value
+
+let type = 'rare'; // variable declared with let
+
+const word = 'hello'; // variable declared with const
 
 // 3 Re-assignment
 var animal = 'cat'; // variable animal is declared and assigned to the string cat
